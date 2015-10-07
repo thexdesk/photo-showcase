@@ -1,7 +1,7 @@
 .ps-header
   .container
     .ps-masthead
-      .pull-right
+      .pull-right.js-content
         .logged_in
           .greetings
             Hello, <span id="username"></span>!
@@ -15,9 +15,10 @@
   - @photos.each do |photo|
     .col-md-4
       .ps-photo{'data-id': photo.id}
-        .logged_in
+        .logged_in.js-content
           .ps-heart-wrapper
             = image_tag 'heart.png', class: 'ps-heart'
         %h4.ps-title
+          %span.label.label-danger.favorited Favorited
           = photo.name
         = image_tag photo.image_url
