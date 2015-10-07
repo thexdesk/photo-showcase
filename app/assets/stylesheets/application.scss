@@ -1,3 +1,14 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+// Vendor
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// Base styles, mixins, functions and variables
+@import "base/colors";
+@import "base/utils";
+
+// Core components
+@import "core/ps-base";
+@import "core/ps-photo";
+
+// Quick changes resides in inbox
+@import "inbox";

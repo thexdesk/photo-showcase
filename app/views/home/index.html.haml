@@ -1,0 +1,11 @@
+.ps-header
+  .container
+    %h1 Top 100 Popular photos
+
+.ps-body.container
+  - @photos.each do |photo|
+    .col-md-4
+      .ps-photo
+        %h4.ps-title
+          = photo.name
+        = image_tag photo.image_url
