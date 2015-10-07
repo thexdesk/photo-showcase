@@ -4,7 +4,8 @@
 
 .ps-body.container
   - @photos.each do |photo|
-    .ps-photo.col-md-4
-      %h4.ps-photo-title
-        = photo.name
-      = image_tag photo.image_url
+    .col-md-4
+      .ps-photo
+        %h4.ps-photo-title
+          = photo.name
+        = image_tag photo.image_url
