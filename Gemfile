@@ -14,6 +14,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'haml-rails', '~> 0.9'
 
+# Update to use RubyGems when v0.5.0 is pushed
+gem 'f00px', :git => "git://github.com/hinshun/f00px.git", :branch => 'feature/fix-rspec-mock'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
