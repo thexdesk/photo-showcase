@@ -2,16 +2,16 @@ oops = () ->
   console.log 'Something went wrong with this request... please try again later'
 
 like = (id) ->
-  _500px.api "/photos/#{id}/favorite", 'delete', (response) ->
+  _500px.api "/photos/#{id}/favorite", 'post', (response) ->
     if (response.success)
-      console.log 'Unliked a photo'
+      console.log 'Liked a photo'
     else
       oops()
 
 unlike = (id) ->
-  _500px.api "/photos/#{id}/favorite", 'post', (response) ->
+  _500px.api "/photos/#{id}/favorite", 'delete', (response) ->
     if (response.success)
-      console.log 'Liked a photo'
+      console.log 'Unliked a photo'
     else
       oops()
 
@@ -40,14 +40,17 @@ setup500px = () ->
   $('#oauth-logout').click _500px.logout
 
   $('.ps-photo').click () ->
+    _this = this
     id = $(this).data('id')
 
     _500px.api "/photos/#{id}", (response) ->
       if (response.success)
         if (response.data.photo.favorited)
-          like(id)
-        else
           unlike(id)
+          $(_this).find('.favorited').hide()
+        else
+          like(id)
+          $(_this).find('.favorited').show()
       else
         oops()
 
