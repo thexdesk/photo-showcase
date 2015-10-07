@@ -1,0 +1,8 @@
+.ps-photo {
+  display: inline-block;
+
+  .ps-title {
+    @extend %text-ellipsis;
+    max-width: 200px;
+  }
+}
