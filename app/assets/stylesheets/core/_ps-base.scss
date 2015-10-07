@@ -1,13 +1,23 @@
 .ps-header {
   padding: 30px 0;
   background-color: $primary;
-
-  h1 {
-    color: #fff;
-  }
+  color: #fff;
 }
 
 .ps-body {
   padding: 20px 0;
   text-align: center;
+}
+
+.ps-masthead {
+  font-size: 14px;
+
+  .greetings {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+.ps-btn {
+  @include button-variant(#fff, transparent, #fff);
 }
