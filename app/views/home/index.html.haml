@@ -1,11 +1,24 @@
 .ps-header
   .container
+    .ps-masthead
+      .pull-right.js-content
+        .logged_in
+          .greetings
+            Hello, <span id="username"></span>!
+          .btn.ps-btn#oauth-logout Logout
+        .not_logged_in
+          .btn.ps-btn#oauth-login Login via 500px
+
     %h1 Top 100 Popular photos
 
 .ps-body.container
   - @photos.each do |photo|
     .col-md-4
-      .ps-photo
+      .ps-photo{'data-id': photo.id}
+        .logged_in.js-content
+          .ps-heart-wrapper
+            = image_tag 'heart.png', class: 'ps-heart'
         %h4.ps-title
+          %span.label.label-danger.favorited Favorited
           = photo.name
         = image_tag photo.image_url
