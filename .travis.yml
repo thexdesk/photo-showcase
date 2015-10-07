@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+   - 2.2.2
+env:
+  - CODECLIMATE_REPO_TOKEN=2721718dc4cb8aa2fb29bc95a7eeaf9d48f31b6377fc98d7fbdf900bdfdf6edc
+script:
+  - bundle exec rake --trace spec
