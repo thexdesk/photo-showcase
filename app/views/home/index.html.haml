@@ -2,11 +2,11 @@
   .container
     .ps-masthead
       .pull-right
-        #logged_in
+        .logged_in
           .greetings
             Hello, <span id="username"></span>!
           .btn.ps-btn#oauth-logout Logout
-        #not_logged_in
+        .not_logged_in
           .btn.ps-btn#oauth-login Login via 500px
 
     %h1 Top 100 Popular photos
@@ -14,7 +14,10 @@
 .ps-body.container
   - @photos.each do |photo|
     .col-md-4
-      .ps-photo
+      .ps-photo{'data-id': photo.id}
+        .logged_in
+          .ps-heart-wrapper
+            = image_tag 'heart.png', class: 'ps-heart'
         %h4.ps-title
           = photo.name
         = image_tag photo.image_url

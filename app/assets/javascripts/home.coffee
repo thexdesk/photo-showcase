@@ -1,3 +1,21 @@
+oops = () ->
+  console.log 'Something went wrong with this request... please try again later'
+
+like = (id) ->
+  _500px.api "/photos/#{id}/favorite", 'delete', (response) ->
+    if (response.success)
+      console.log 'Unliked a photo'
+    else
+      oops()
+
+unlike = (id) ->
+  _500px.api "/photos/#{id}/favorite", 'post', (response) ->
+    if (response.success)
+      console.log 'Liked a photo'
+    else
+      oops()
+
+
 # Taken from https://github.com/500px/500px-js-sdk/blob/master/examples/example1.html
 setup500px = () ->
   _500px.init {
@@ -5,21 +23,33 @@ setup500px = () ->
   }
 
   _500px.on 'authorization_obtained', () ->
-    $('#not_logged_in').hide()
-    $('#logged_in').show()
+    $('.not_logged_in').hide()
+    $('.logged_in').show()
 
     _500px.api '/users', (response) ->
       me = response.data.user;
       $('#username').html(me.username)
 
   _500px.on 'logout', () ->
-    $('#not_logged_in').show()
-    $('#logged_in').hide()
+    $('.not_logged_in').show()
+    $('.logged_in').hide()
 
   _500px.getAuthorizationStatus()
 
   $('#oauth-login').click _500px.login
   $('#oauth-logout').click _500px.logout
+
+  $('.ps-photo').click () ->
+    id = $(this).data('id')
+
+    _500px.api "/photos/#{id}", (response) ->
+      if (response.success)
+        if (response.data.photo.favorited)
+          like(id)
+        else
+          unlike(id)
+      else
+        oops()
 
 $ ->
   setup500px()
