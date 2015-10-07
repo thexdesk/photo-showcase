@@ -1,0 +1,5 @@
+- @photos.each do |photo|
+  .photo
+    %h2
+      = photo.name
+    = image_tag photo.image_url
