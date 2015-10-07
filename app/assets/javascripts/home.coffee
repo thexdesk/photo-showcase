@@ -15,6 +15,12 @@ unlike = (id) ->
     else
       oops()
 
+updateFavorites = (ids) ->
+  $favorited = $('.ps-photo').filter () ->
+    ids.indexOf($(this).data('id')) > -1
+
+  $favorited.find('.favorited').show()
+
 
 # Taken from https://github.com/500px/500px-js-sdk/blob/master/examples/example1.html
 setup500px = () ->
@@ -29,6 +35,15 @@ setup500px = () ->
     _500px.api '/users', (response) ->
       me = response.data.user;
       $('#username').html(me.username)
+
+      _500px.api '/photos', { feature: 'user_favorites', user_id: me.id }, (response) ->
+        photos = response.data.photos
+        if (photos.length != 0)
+          ids = $.map photos, (photo) ->
+            photo.id
+
+          updateFavorites(ids)
+
 
   _500px.on 'logout', () ->
     $('.not_logged_in').show()
