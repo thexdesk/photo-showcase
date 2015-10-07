@@ -1,5 +1,14 @@
 .ps-header
   .container
+    .ps-masthead
+      .pull-right
+        #logged_in
+          .greetings
+            Hello, <span id="username"></span>!
+          .btn.ps-btn#oauth-logout Logout
+        #not_logged_in
+          .btn.ps-btn#oauth-login Login via 500px
+
     %h1 Top 100 Popular photos
 
 .ps-body.container
