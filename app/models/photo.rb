@@ -1,5 +1,5 @@
 class Photo
-  attr_accessor :name, :image_url
+  attr_accessor :id, :name, :image_url
 
   def initialize(id, name, image_url)
     @id = id
