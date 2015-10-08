@@ -1,6 +1,8 @@
 .ps-header
   .container
     .ps-masthead
+      .pull-left.brand
+        hinshun/photo-showcase
       .pull-right.js-content
         .logged_in
           .greetings
@@ -9,7 +11,9 @@
         .not_logged_in
           .btn.ps-btn#oauth-login Login via 500px
 
-    %h1 Top 100 Popular photos
+    %h1.title
+      Top 100 Popular photos
+      = image_tag '500px-logo.png', class: 'logo'
 
 .ps-body.container
   - @photos.each do |photo|

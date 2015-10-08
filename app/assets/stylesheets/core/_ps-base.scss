@@ -1,7 +1,29 @@
 .ps-header {
-  padding: 30px 0;
-  background-color: $primary;
-  color: #fff;
+  padding: 30px 0 90px;
+  color: $lighten;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+
+  background: $primary;
+  @include background-radial-gradient(#8ED2D6,#6BA2C5,#6874BB,$primary,#3C2365);
+
+  .brand {
+    font-size: 16px;
+    font-weight: bold;
+    color: $lighten;
+  }
+
+  .title {
+    text-align: center;
+    color: $brighten;
+    padding: 80px 0;
+  }
+
+  .logo {
+    padding: 25px 0;
+    display: block;
+    margin: 0 auto;
+    opacity: .6;
+  }
 }
 
 .ps-body {
@@ -11,6 +33,7 @@
 
 .ps-masthead {
   font-size: 14px;
+  height: 50px;
 
   .greetings {
     display: inline-block;
@@ -19,5 +42,6 @@
 }
 
 .ps-btn {
-  @include button-variant(#fff, transparent, #fff);
+  @include button-variant($lighten, transparent, $lighten);
+  @include border-radius(15px);
 }
