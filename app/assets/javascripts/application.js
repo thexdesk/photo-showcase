@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require modernizr
+//= require packery
 //= require 500px
 //= require_tree .

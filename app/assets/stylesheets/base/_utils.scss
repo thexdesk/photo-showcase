@@ -11,3 +11,18 @@
   margin-top: 0;
   padding-top: 0;
 }
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin background-radial-gradient($color1, $color2, $color3, $color4, $color5) {
+  background: -webkit-radial-gradient(circle farthest-corner at right bottom,$color1 0,$color2 28%,$color3 52%,$color4 79%,$color5 100%);
+  background: -moz-radial-gradient(circle farthest-corner at right bottom,$color1 0,$color2 28%,$color3 52%,$color4 79%,$color5 100%);
+  background: -o-radial-gradient(circle farthest-corner at right bottom,$color1 0,$color2 28%,$color3 52%,$color4 79%,$color5 100%);
+  background: -ms-radial-gradient(circle farthest-corner at right bottom,$color1 0,$color2 28%,$color3 52%,$color4 79%,$color5 100%);
+  background: radial-gradient(circle farthest-corner at right bottom,$color1 0,$color2 28%,$color3 52%,$color4 79%,$color5 100%);
+}

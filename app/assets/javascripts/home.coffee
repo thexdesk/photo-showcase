@@ -1,26 +1,28 @@
 oops = () ->
   console.log 'Something went wrong with this request... please try again later'
 
-like = (id) ->
+like = ($heart, id) ->
   _500px.api "/photos/#{id}/favorite", 'post', (response) ->
-    if (response.success)
-      console.log 'Liked a photo'
-    else
-      oops()
+    oops() if !response.success
+    favorite($heart)
 
-unlike = (id) ->
+unlike = ($heart, id) ->
   _500px.api "/photos/#{id}/favorite", 'delete', (response) ->
-    if (response.success)
-      console.log 'Unliked a photo'
-    else
-      oops()
+    oops() if !response.success
+    unfavorite($heart)
+
+# JQuery can't add class to SVG
+favorite = ($heart) ->
+  $heart.attr('class', 'ps-heart favorited');
+
+unfavorite = ($heart) ->
+  $heart.attr('class', 'ps-heart');
 
 updateFavorites = (ids) ->
-  $favorited = $('.ps-photo').filter () ->
+  $favorited = $('.ps-photo-box').filter () ->
     ids.indexOf($(this).data('id')) > -1
 
-  $favorited.find('.favorited').show()
-
+  favorite($favorited.find('.ps-heart'));
 
 # Taken from https://github.com/500px/500px-js-sdk/blob/master/examples/example1.html
 setup500px = () ->
@@ -54,20 +56,21 @@ setup500px = () ->
   $('#oauth-login').click _500px.login
   $('#oauth-logout').click _500px.logout
 
-  $('.ps-photo').click () ->
-    _this = this
+  $('.ps-photo-box').click () ->
+    $heart = $(this).find('.ps-heart')
     id = $(this).data('id')
 
-    _500px.api "/photos/#{id}", (response) ->
-      if (response.success)
-        if (response.data.photo.favorited)
-          unlike(id)
-          $(_this).find('.favorited').hide()
-        else
-          like(id)
-          $(_this).find('.favorited').show()
-      else
-        oops()
+    if ($heart.attr('class') == 'ps-heart')
+      like($heart, id)
+    else
+      unlike($heart, id)
+
+setupPackery = () ->
+  $('#ps-photos').packery {
+    itemSelector: '.ps-photo-box'
+    gutter: 10
+  }
 
 $ ->
   setup500px()
+  setupPackery()
