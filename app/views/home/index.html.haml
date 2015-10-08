@@ -15,14 +15,29 @@
       Top 100 Popular photos
       = image_tag '500px-logo.png', class: 'logo'
 
-.ps-body.container
+#ps-photos
   - @photos.each do |photo|
-    .col-md-4
-      .ps-photo{'data-id': photo.id}
-        .logged_in.js-content
-          .ps-heart-wrapper
-            = image_tag 'heart.png', class: 'ps-heart'
-        %h4.ps-title
-          %span.label.label-danger.favorited Favorited
+    .ps-photo-box{'data-id': photo.id, style: "width: #{(300.0 / photo.height) * photo.width}px"}
+      .logged_in.js-content
+        .ps-heart-wrapper
+          = inline_svg 'heart.svg', class: 'ps-heart'
+
+      = image_tag photo.image_url
+
+      .meta
+        %h3.ps-title
           = photo.name
-        = image_tag photo.image_url
+        %small.ps-description
+          = photo.description
+
+-# .ps-body.container
+-#   - @photos.each do |photo|
+-#     .col-md-4
+-#       .ps-photo{'data-id': photo.id}
+-#         .logged_in.js-content
+-#           .ps-heart-wrapper
+-#             = image_tag 'heart.png', class: 'ps-heart'
+-#         %h4.ps-title
+-#           %span.label.label-danger.favorited Favorited
+-#           = photo.name
+-#         = image_tag photo.image_url

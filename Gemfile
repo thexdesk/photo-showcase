@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'haml-rails', '~> 0.9'
+gem 'inline_svg', '~> 0.6'
 
 # Update to use RubyGems when v0.5.0 is pushed
 gem 'f00px', :git => "git://github.com/hinshun/f00px.git", :branch => 'feature/fix-rspec-mock'

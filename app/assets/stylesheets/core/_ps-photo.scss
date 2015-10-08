@@ -1,34 +1,63 @@
-.ps-photo {
-  max-width: $photo-width;
-  display: inline-block;
+#ps-photos {
+  padding: 10px 10px;
+}
+
+.ps-photo-box {
+  height: 300px;
+  float: left;
+
+  img {
+    display: block;
+  }
+
+  .meta {
+    position: relative;
+    color: $brighten;
+    background-color: $darken;
+    padding: 4px 8px;
+    bottom: 63px;
+  }
 
   .ps-title {
     @extend %text-ellipsis;
+    margin: 2px 0;
+    line-height: 30px;
+  }
 
-    .favorited {
-      font-size: 10px;
-      display: none;
-    }
+  .ps-description {
+    @extend %text-ellipsis;
+    line-height: 10px;
   }
 
   .ps-heart-wrapper {
+    padding: 8px;
     position: absolute;
-    width: $photo-width;
-    height: 100%;
+    width: 100%;
   }
 
-  // image from https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-128.png
   .ps-heart {
-    @extend %vertically-align;
-    position: relative;
-    margin: 0 auto;
     display: none;
-    opacity: 0.8;
+    float: right;
+    
+    path {
+      fill: $darken;
+    }
+
+    &.favorited {
+      path {
+        fill: #FF4136;
+      }
+    }
   }
 
   &:hover {
     .ps-heart {
-      display: inline;
+      display: block;
     }
   }
+}
+
+.no-js .ps-photo-box {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
