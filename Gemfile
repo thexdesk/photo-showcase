@@ -19,7 +19,7 @@ gem 'inline_svg', '~> 0.6'
 gem 'f00px', :git => "git://github.com/hinshun/f00px.git", :branch => 'feature/fix-rspec-mock'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.4.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
